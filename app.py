@@ -5,6 +5,14 @@ app = Flask(__name__)
 @app.route("/")
 def main():
 	return render_template("index.html")
+
+@app.route("/concept")
+def concept():
+	return render_template("concept.html")
+	
+@app.route("/howto")
+def howto():
+	return render_template("howto.html")
 	
 @app.route("/input_file")
 def input_file():

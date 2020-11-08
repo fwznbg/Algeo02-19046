@@ -3,6 +3,12 @@
 <title>Tubes Algeo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body  {
+  background-image: url("wood.jpg");
+  background-color: #cccccc;
+}
+</style>
 <body>
 <body style="background-color:salmon;">
 <!-- Sidebar -->
@@ -24,16 +30,16 @@
   </div>
 </div>
 
-
-<img src="static/comp.jpg" alt="comp" style="width:100%">
-<p style="color:black">Click on the "Choose File" button to upload a file:</p>
-
-<form action="{{url_for('main')}}">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
+<form class="w3-container">
+  <h2>Anjayani</h2>
+  <p>Input password:</p>
+  <input class="w3-input w3-animate-input" type="text" style="width:135px"><br>
+  <a href="{{url_for('main')}}">Return To Homepage </a>
 </form>
 
-<p style="color:red">Note: Please input files with .txt or .html extension</p>
+</body>
+</html>
+
 
 <script>
 function w3_open() {
@@ -44,5 +50,3 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 </script>
-     
-</body>
