@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-<body style="background-color:yellow;">
+<body style="background-color:salmon;">
 <!-- Sidebar -->
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
@@ -25,7 +25,7 @@
 <img src="static/comp.jpg" alt="comp" style="width:100%">
 <p style="color:black">Click on the "Choose File" button to upload a file:</p>
 
-<form action="/action_page.php">
+<form action="{{url_for('main')}}">
   <input type="file" id="myFile" name="filename">
   <input type="submit">
 </form>

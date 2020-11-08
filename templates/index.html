@@ -28,10 +28,13 @@ body  {
 </div>
 
 <img src="static/comp.jpg" alt="comp" style="width:100%">
-<div class="w3-container">
-<p style="color:white">Input query:</p>
-<input class="w3-input w3-animate-input" type="text" style="width:135px"><br>
-</div>
+	
+<form action="{{url_for('main')}}">
+  <p style="color:white">Input query:</p>
+  <input type="text" id="query" name="query" size="100"><br>
+  <p style="color:white"> </p>
+  <input type="submit" value="Submit">
+</form> 
 
 <script>
 function w3_open() {
