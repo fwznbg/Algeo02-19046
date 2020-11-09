@@ -12,14 +12,12 @@ body  {
 <body>
 <body style="background-color:salmon;">
 <!-- Sidebar -->
+<!-- Sidebar -->
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
   <a href="{{url_for('main')}}" class="w3-bar-item w3-button">Home</a>
   <a href="{{url_for('input_file')}}" class="w3-bar-item w3-button">Input Document</a>
-  <a href="{{url_for('concept')}}" class="w3-bar-item w3-button">Concept</a>
-  <a href="{{url_for('howto')}}" class="w3-bar-item w3-button">How to Use</a>
   <a href="{{url_for('about')}}" class="w3-bar-item w3-button">About</a>
-  <a href="{{url_for('motivational_video')}}" class="w3-bar-item w3-button">Motivational Video</a>
 </div>
 
 <!-- Page Content -->
@@ -36,10 +34,17 @@ body  {
   <p style="color:white">Input query:</p>
   <input type="text" id="query" name="query" size="100"><br>
   <p style="color:white"> </p>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Search">
   <p style="color:white"> </p>
   <p style="color:white"> </p>
 </form> 
+
+<p style="color:salmon">test </p>
+
+<hr>
+ 
+
+<a href="{{url_for('about')}}">About </a>
 
 <script>
 function w3_open() {

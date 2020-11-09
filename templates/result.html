@@ -3,12 +3,7 @@
 <title>Tubes Algeo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-body  {
-  background-image: url("wood.jpg");
-  background-color: #cccccc;
-}
-</style>
+
 <body>
 <body style="background-color:salmon;">
 <!-- Sidebar -->
@@ -16,10 +11,7 @@ body  {
   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
   <a href="{{url_for('main')}}" class="w3-bar-item w3-button">Home</a>
   <a href="{{url_for('input_file')}}" class="w3-bar-item w3-button">Input Document</a>
-  <a href="{{url_for('concept')}}" class="w3-bar-item w3-button">Concept</a>
-  <a href="{{url_for('howto')}}" class="w3-bar-item w3-button">How to Use</a>
   <a href="{{url_for('about')}}" class="w3-bar-item w3-button">About</a>
-  <a href="{{url_for('motivational_video')}}" class="w3-bar-item w3-button">Motivational Video</a>
 </div>
 
 <!-- Page Content -->
@@ -30,16 +22,49 @@ body  {
   </div>
 </div>
 
-<form class="w3-container">
-  <h2>Anjayani</h2>
-  <p>Input password:</p>
-  <input class="w3-input w3-animate-input" type="text" style="width:135px"><br>
-  <a href="{{url_for('main')}}">Return To Homepage </a>
+<form action="{{url_for('result')}}">
+  <p style="color:white">Input query:</p>
+  <input type="text" id="query" name="query" size="100"><br>
+  <p style="color:white"> </p>
+  <input type="submit" value="Search">
+  <p style="color:white"> </p>
+  <p style="color:white"> </p>
 </form>
 
-</body>
-</html>
+<hr>  
+  
+<body>
+	{% for item in items %}
+		<a href="{{item.lokasi}}">{{item.nama}}</a>
+		<p>{{item.jumlah}}</p>
+		<p>{{item.kemiripan}} %</p>
+		<p>{{item.kalimat}}</p>
+		<p style="color:salmon">test </p>
 
+	{% endfor %}
+</body>  
+
+<p style="color:salmon">test </p>
+<p style="color:salmon">test </p>
+
+<body>
+	{% for item in items %}
+		<tr>
+		{% for barang in item %}	
+            <td> {{ barang }} </td>
+        {% endfor %}
+        </tr>    
+	{% endfor %}
+</body>    
+
+</body>
+
+<p style="color:salmon">test </p>
+
+<hr>
+ 
+
+<a href="{{url_for('about')}}">About </a>
 
 <script>
 function w3_open() {
@@ -50,3 +75,4 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 </script>
+</html>
