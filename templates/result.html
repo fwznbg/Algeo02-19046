@@ -10,7 +10,11 @@
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
   <a href="{{url_for('main')}}" class="w3-bar-item w3-button">Home</a>
+<<<<<<< HEAD
   <a href="{{url_for('upload')}}" class="w3-bar-item w3-button">Input Document</a>
+=======
+  <a href="{{url_for('input_file')}}" class="w3-bar-item w3-button">Input Document</a>
+>>>>>>> 989c23ba6f3935d6ab30ffbeb0e68214a8a426cc
   <a href="{{url_for('about')}}" class="w3-bar-item w3-button">About</a>
 </div>
 
@@ -34,7 +38,6 @@
 <hr>  
   
 <body>
-  <!-- <p>{{dataList}}</p> -->
 	{% for doc in dataList %}
 		<a href="{{doc[3]}}">{{doc[0]}}</a>
 		<p>Jumlah Kata: {{doc[1]}}</p>  
@@ -57,7 +60,6 @@
 	{% endfor %}
 </body>     -->
 
-</body>
 
 <p style="color:salmon">test </p>
 

@@ -2,7 +2,11 @@ body {
 	background: gray;
 	background-image:url("comp.jpg");
 	color: white;
+<<<<<<< HEAD
 }
+=======
+
+>>>>>>> 989c23ba6f3935d6ab30ffbeb0e68214a8a426cc
 hl{
 	text-align: center;
 	text-decoration: underline;
@@ -14,5 +18,8 @@ hl{
 	width: 500px;
 	margin: 0 auto;
 	text-align: center;
+<<<<<<< HEAD
 }
 
+=======
+>>>>>>> 989c23ba6f3935d6ab30ffbeb0e68214a8a426cc
