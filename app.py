@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import os
 from nltk.stem import PorterStemmer 
 from nltk.tokenize import word_tokenize 
@@ -45,105 +45,13 @@ def stemSentence(sentence):
 
 #  list of tuples of doc's data (nama doc, jumlahkata, kemiripan, lokasi, baris pertama dari doc)
 dataList = []
+query = ""
 @app.route("/", methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
-        df = pd.DataFrame()
-        # terms menyimpan daftar term
-        terms = [] 
-        # list of document
-        docList = []
-        # contain first line of doc
-        firstLine = {}
-
-        global dataList
-        
-        if dataList:
-            dataList.clear()
-
-        # global terms
-        # global df
+        global query
         query = request.form["query"]
-        for filename in os.listdir(directory):
-                # membaca tiap file di document
-            file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
-            # membaca setiap baris pada document
-            my_lines_list=file.readlines()
-
-            # if not isStemmed:
-            for line in my_lines_list:
-                # remove stopWords dan punctuation serta stemming tiap baris
-                x = stemSentence(removeStopwords(removePunctuation(line)))
-                x = x.split(" ")
-                # menambahkan setiap term baru ke daftar term (terms)
-                for term in x:
-                    if term not in terms:
-                        terms.append(term)
-                        
-        # menghapus "" pada indeks
-        processedQuery = stemSentence(removeStopwords(removePunctuation(query)))
-        processedQuery = processedQuery.split(" ")
-        processedQuery = [word for word in processedQuery if word != ""]
-        # menambahkan setiap term baru ke daftar term (terms)
-        for term in processedQuery:
-            if term not in terms:
-                terms.append(term)
-                
-        terms = [word for word in terms if word != ""]
-        term_length = len(terms)
-
-        # menjadikan terms sebagai index
-        df = pd.DataFrame(index=terms)
-
-        df["query"] = [0 for i in range(term_length)]
-        for word in processedQuery:
-            df["query"][word] += 1
-            
-        for filename in os.listdir(directory):   
-            # inisialisasi tabel term dengan 0
-            df[filename.split(".")[0]] = [0 for i in range(term_length)]
-            # menghitung term pada tiap document
-            file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
-            my_lines_list=file.readlines()
-            
-            x = []
-            lineList = []
-            # global firstLine
-            for line in my_lines_list:
-                y = stemSentence(removeStopwords(removePunctuation(line)))
-                y = y.split(" ")
-                x.extend(y)
-                lineList.append(line)
-            firstLine[filename.split(".")[0]] = lineList[0]
-            # menghapus "" pada list term dari document
-            x = [word for word in x if word != ""]
-            # menghitung tiap term pada tiap dokumen
-            for word in x:
-                df[filename.split(".")[0]][word] += 1
-
-        # append document name to docList
-        # global docList
-        for filename in os.listdir(directory):   
-            docList.append(filename.split(".")[0])
-        # vector of query
-        vecQuery = np.array(df['query'])
-        #calculate similiarity
-        for doc in docList:
-            vector = np.array(df[doc])
-            sim = np.dot(vecQuery, vector)/(np.linalg.norm(vecQuery)*np.linalg.norm(vector))
-            globals()["sim_"+doc] = sim
-        # append doc's data to dataList
-       
-        for doc in os.listdir(directory): 
-            docName = doc.split(".")[0]
-            globals()[docName] = tuple((docName, df[docName].sum(), globals()["sim_"+docName], "D:/simplesearchengine/"+doc, firstLine[docName]))
-            # global dataList
-            dataList.append(globals()[docName])
-        # sort dataList descendingly by value of "kemiripan"
-        # global dataList
-        dataList = sorted(dataList, key = lambda x: x[1], reverse = True)
-        # return render_template("result.html", dataList=dataList)
-        return render_template("result.html", dataList=dataList)
+        return redirect(url_for("result"))
     return render_template("index.html")
 
 @app.route("/upload", methods=['GET', 'POST'])
@@ -161,7 +69,102 @@ def upload():
     
 @app.route("/result", methods=['GET', 'POST'])
 def result():
+    df = pd.DataFrame()
+    # terms menyimpan daftar term
+    terms = [] 
+    # list of document
+    docList = []
+    # contain first line of doc
+    firstLine = {}
+
+    global dataList
+    
+    if dataList:
+        dataList.clear()
+
+    # global terms
+    # global df
+    for filename in os.listdir(directory):
+            # membaca tiap file di document
+        file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
+        # membaca setiap baris pada document
+        my_lines_list=file.readlines()
+
+        # if not isStemmed:
+        for line in my_lines_list:
+            # remove stopWords dan punctuation serta stemming tiap baris
+            x = stemSentence(removeStopwords(removePunctuation(line)))
+            x = x.split(" ")
+            # menambahkan setiap term baru ke daftar term (terms)
+            for term in x:
+                if term not in terms:
+                    terms.append(term)
+                    
+    # menghapus "" pada indeks
+    global query
+    processedQuery = stemSentence(removeStopwords(removePunctuation(query)))
+    processedQuery = processedQuery.split(" ")
+    processedQuery = [word for word in processedQuery if word != ""]
+    # menambahkan setiap term baru ke daftar term (terms)
+    for term in processedQuery:
+        if term not in terms:
+            terms.append(term)
+            
+    terms = [word for word in terms if word != ""]
+    term_length = len(terms)
+
+    # menjadikan terms sebagai index
+    df = pd.DataFrame(index=terms)
+
+    df["query"] = [0 for i in range(term_length)]
+    for word in processedQuery:
+        df["query"][word] += 1
+        
+    for filename in os.listdir(directory):   
+        # inisialisasi tabel term dengan 0
+        df[filename.split(".")[0]] = [0 for i in range(term_length)]
+        # menghitung term pada tiap document
+        file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
+        my_lines_list=file.readlines()
+        
+        x = []
+        lineList = []
+        # global firstLine
+        for line in my_lines_list:
+            y = stemSentence(removeStopwords(removePunctuation(line)))
+            y = y.split(" ")
+            x.extend(y)
+            lineList.append(line)
+        firstLine[filename.split(".")[0]] = lineList[0]
+        # menghapus "" pada list term dari document
+        x = [word for word in x if word != ""]
+        # menghitung tiap term pada tiap dokumen
+        for word in x:
+            df[filename.split(".")[0]][word] += 1
+
+    # append document name to docList
+    # global docList
+    for filename in os.listdir(directory):   
+        docList.append(filename.split(".")[0])
+    # vector of query
+    vecQuery = np.array(df['query'])
+    #calculate similiarity
+    for doc in docList:
+        vector = np.array(df[doc])
+        sim = np.dot(vecQuery, vector)/(np.linalg.norm(vecQuery)*np.linalg.norm(vector))
+        globals()["sim_"+doc] = sim
+    # append doc's data to dataList
+    
+    for doc in os.listdir(directory): 
+        docName = doc.split(".")[0]
+        globals()[docName] = tuple((docName, df[docName].sum(), globals()["sim_"+docName], "D:/simplesearchengine/"+doc, firstLine[docName]))
+        # global dataList
+        dataList.append(globals()[docName])
+    # sort dataList descendingly by value of "kemiripan"
+    # global dataList
+    dataList = sorted(dataList, key = lambda x: x[1], reverse = True)
     return render_template("result.html", dataList=dataList)
+    
 @app.route("/about")
 def about():
     return render_template("about.html")
