@@ -1,3 +1,14 @@
+import pip
+# import subprocess
+def install(package):
+    if hasattr(pip, 'main'):
+        pip.main(['install', package])
+    else:
+        pip._internal.main(['install', package])
+
+install("flask")
+install("nltk")
+
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from nltk.stem import PorterStemmer 
@@ -45,6 +56,7 @@ def stemSentence(sentence):
 
 #  list of tuples of doc's data (nama doc, jumlahkata, kemiripan, lokasi, baris pertama dari doc)
 dataList = []
+# contain query
 query = ""
 # datframe contains terms in query
 df_query = pd.DataFrame()
@@ -62,6 +74,7 @@ def main():
 def upload():
     if request.method == 'POST':
         file = request.files['file']
+        # rename doc's file if doc's name exists
         if file.filename in os.listdir(directory):
             if(file.filename.split(".")[1] == "txt"):
                 file.filename = file.filename.split(".")[0]+"_02.txt"
@@ -86,18 +99,19 @@ def result():
     # contain first line of doc
     firstLine = {}
     
+    # clear dataList value if dataList not empty
     if dataList:
         dataList.clear()
+    # clear docList value if docList not empty
     if docList:
         docList.clear()
+    # emptying df_query
     if not df_query.empty:
         for column in df_query.columns:
             df_query.drop(column, axis=1, inplace=True)
 
-    # global terms
-    # global df
     for filename in os.listdir(directory):
-            # membaca tiap file di document
+        # membaca tiap file di document
         file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
         # membaca setiap baris pada document
         my_lines_list=file.readlines()
@@ -113,7 +127,6 @@ def result():
                     terms.append(term)
                     
     # menghapus "" pada indeks
-    # global query
     processedQuery = stemSentence(removeStopwords(removePunctuation(query)))
     processedQuery = processedQuery.split(" ")
     processedQuery = [word for word in processedQuery if word != ""]
@@ -121,14 +134,16 @@ def result():
     for term in processedQuery:
         if term not in terms:
             terms.append(term)
-            
+    # terms akan berisi kata selain ""        
     terms = [word for word in terms if word != ""]
     term_length = len(terms)
 
     # menjadikan terms sebagai index
     df = pd.DataFrame(index=terms)
 
+    # inisialisasi kolom query dengan 0
     df["query"] = [0 for i in range(term_length)]
+    # menghitung kemunculan query
     for word in processedQuery:
         df["query"][word] += 1
         
@@ -141,12 +156,13 @@ def result():
         
         x = []
         lineList = []
-        # global firstLine
+    
         for line in my_lines_list:
             y = stemSentence(removeStopwords(removePunctuation(line)))
             y = y.split(" ")
             x.extend(y)
             lineList.append(line)
+        # berisi baris pertama dari tiap doc
         firstLine[filename.split(".")[0]] = lineList[0]
         # menghapus "" pada list term dari document
         x = [word for word in x if word != ""]
@@ -159,9 +175,10 @@ def result():
         docList.append(filename.split(".")[0])
     # vector of query
     vecQuery = np.array(df['query'])
-    #calculate similiarity
+    # calculate similiarity
     for doc in docList:
         vector = np.array(df[doc])
+        # sim = (Q.D)/(||Q||.||D||)
         sim = np.dot(vecQuery, vector)/(np.linalg.norm(vecQuery)*np.linalg.norm(vector))
         globals()["sim_"+doc] = sim
     # append doc's data to dataList
@@ -175,6 +192,7 @@ def result():
     # global dataList
     dataList = sorted(dataList, key = lambda x: x[1], reverse = True)
 
+    # berisi terms yang berada di query
     df_query = df.loc[processedQuery, :]
     df_query = df_query.reset_index()
     df_query = df_query.rename(columns={'index':'Term'})
