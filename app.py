@@ -1,14 +1,3 @@
-import pip
-# import subprocess
-def install(package):
-    if hasattr(pip, 'main'):
-        pip.main(['install', package])
-    else:
-        pip._internal.main(['install', package])
-
-install("flask")
-install("nltk")
-
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from nltk.stem import PorterStemmer 
@@ -16,7 +5,7 @@ from nltk.tokenize import word_tokenize
 # import nltk
 from nltk.corpus import stopwords 
 import pandas as pd
-import numpy as np
+# import numpy as np
 
 app = Flask(__name__)
 porter = PorterStemmer()
@@ -26,6 +15,20 @@ directory = 'D:\simplesearchengine'
 # if directory doesn't exist, make a new one
 if not os.path.exists(directory):
     os.makedirs(directory)
+
+# calculate dot product of v1 and v2
+def dotProduct(v1, v2):
+    sum = 0
+    for i in range(len(v1)):
+        sum += v1[i]*v2[i]
+    return sum
+
+# calculate norm of v
+def normaVektor(v):
+    sum = 0
+    for i in range(len(v)):
+        sum += (v[i])**2
+    return sum**0.5
 
 # remove punctuation in document
 def removePunctuation(sentence):
@@ -174,12 +177,17 @@ def result():
     for filename in os.listdir(directory):   
         docList.append(filename.split(".")[0])
     # vector of query
-    vecQuery = np.array(df['query'])
+    vecQuery = []
+    for val in df['query']:
+        vecQuery.append(val)
+    
     # calculate similiarity
     for doc in docList:
-        vector = np.array(df[doc])
+        vector = []
+        for val in df[doc]:
+            vector.append(val)
         # sim = (Q.D)/(||Q||.||D||)
-        sim = np.dot(vecQuery, vector)/(np.linalg.norm(vecQuery)*np.linalg.norm(vector))
+        sim = dotProduct(vecQuery, vector)/(normaVektor(vecQuery)*normaVektor(vector))
         globals()["sim_"+doc] = sim
     # append doc's data to dataList
     
