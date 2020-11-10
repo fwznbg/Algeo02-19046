@@ -192,13 +192,20 @@ def result():
     # append doc's data to dataList
     
     for doc in os.listdir(directory): 
+        file = open('D:\simplesearchengine\{}'.format(doc), encoding="utf8")
+        # count words in file    
+        data = file.read()
+        words = data.split()
+        length = len(words)
+
         docName = doc.split(".")[0]
-        globals()[docName] = tuple((docName, df[docName].sum(), globals()["sim_"+docName], "D:/simplesearchengine/"+doc, firstLine[docName]))
-        # global dataList
+        # similiarity
+        similiarity = round(globals()["sim_"+docName]*100, 2)
+        globals()[docName] = tuple((docName, length, similiarity, "D:/simplesearchengine/"+doc, firstLine[docName]))
         dataList.append(globals()[docName])
+
     # sort dataList descendingly by value of "kemiripan"
-    # global dataList
-    dataList = sorted(dataList, key = lambda x: x[1], reverse = True)
+    dataList = sorted(dataList, key = lambda x: x[2], reverse = True)
 
     # berisi terms yang berada di query
     df_query = df.loc[processedQuery, :]
