@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<form method = "POST"  action="{{url_for('result')}}">
+<form method = "POST" action="{{url_for('result')}}">
   <p style="color:white">Input query:</p>
   <input type="text" id="query" name="query" size="100"><br>
   <p style="color:white"> </p>
@@ -46,15 +46,24 @@
 <p style="color:salmon">test </p>
 <p style="color:salmon">test </p>
 
-<!-- <body>
-	{% for item in items %}
-		<tr>
-		{% for barang in item %}	
-            <td> {{ barang }} </td>
-        {% endfor %}
-        </tr>    
-	{% endfor %}
-</body>     -->
+<body>
+  <table style="width:100%">
+    <tr>
+      <th>Term</th>
+      <th>Query</th>
+      {% for doc in docList %}  
+      <th>{{doc}}</th>  
+      {% endfor %}
+    </tr>
+    {% for i in range(df_query|length) %}
+    <tr>
+      {% for j in range(docList|length) %}
+      <td>{{df_query.iloc[i][j]}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</body>    
 
 
 <p style="color:salmon">test </p>

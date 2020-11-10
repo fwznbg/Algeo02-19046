@@ -46,6 +46,10 @@ def stemSentence(sentence):
 #  list of tuples of doc's data (nama doc, jumlahkata, kemiripan, lokasi, baris pertama dari doc)
 dataList = []
 query = ""
+# datframe contains terms in query
+df_query = pd.DataFrame()
+# list of document
+docList = []
 @app.route("/", methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
@@ -69,18 +73,26 @@ def upload():
     
 @app.route("/result", methods=['GET', 'POST'])
 def result():
+    global query
+    global df_query
+    global dataList
+    global docList
+
     df = pd.DataFrame()
+    if request.method == 'POST':
+        query = request.form["query"]
     # terms menyimpan daftar term
     terms = [] 
-    # list of document
-    docList = []
     # contain first line of doc
     firstLine = {}
-
-    global dataList
     
     if dataList:
         dataList.clear()
+    if docList:
+        docList.clear()
+    if not df_query.empty:
+        for column in df_query.columns:
+            df_query.drop(column, axis=1, inplace=True)
 
     # global terms
     # global df
@@ -101,7 +113,7 @@ def result():
                     terms.append(term)
                     
     # menghapus "" pada indeks
-    global query
+    # global query
     processedQuery = stemSentence(removeStopwords(removePunctuation(query)))
     processedQuery = processedQuery.split(" ")
     processedQuery = [word for word in processedQuery if word != ""]
@@ -143,7 +155,6 @@ def result():
             df[filename.split(".")[0]][word] += 1
 
     # append document name to docList
-    # global docList
     for filename in os.listdir(directory):   
         docList.append(filename.split(".")[0])
     # vector of query
@@ -163,8 +174,13 @@ def result():
     # sort dataList descendingly by value of "kemiripan"
     # global dataList
     dataList = sorted(dataList, key = lambda x: x[1], reverse = True)
-    return render_template("result.html", dataList=dataList)
-    
+
+    df_query = df.loc[processedQuery, :]
+    df_query = df_query.reset_index()
+    df_query = df_query.rename(columns={'index':'Term'})
+    df_query['query'] = processedQuery
+    return render_template("result.html", dataList=dataList, df_query=df_query, docList=docList)
+
 @app.route("/about")
 def about():
     return render_template("about.html")
