@@ -48,15 +48,19 @@
 
 <body>
   <table style="width:100%">
+    <!-- kolom tabel -->
     <tr>
-      <th>Term</th>
+      <!-- nama kolom -->
+      <th>Term</th> 
       <th>Query</th>
       {% for doc in docList %}  
       <th>{{doc}}</th>  
       {% endfor %}
     </tr>
+    <!-- baris tabel -->
     {% for i in range(df_query|length) %}
     <tr>
+      <!-- isi tiap kolom -->
       {% for j in range(docList|length) %}
       <td>{{df_query.iloc[i][j]}}</td>
       {% endfor %}
