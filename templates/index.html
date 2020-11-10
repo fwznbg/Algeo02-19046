@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<title>Tubes Algeo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body  {
+  background-image: url("wood.jpg");
+  background-color: #cccccc;
+}
+</style>
+<body>
+<body style="background-color:salmon;">
+<!-- Sidebar -->
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="{{url_for('main')}}" class="w3-bar-item w3-button">Home</a>
+  <a href="{{url_for('upload')}}" class="w3-bar-item w3-button">Input Document</a>
+  <a href="{{url_for('about')}}" class="w3-bar-item w3-button">About</a>
+</div>
+
+<!-- Page Content -->
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+  <div class="w3-container">
+    <h1>Trusted 100% Legit Reliable Search Engine</h1>
+  </div>
+</div>
+
+<img src="static/comp.jpg" alt="comp" style="width:100%">
+	
+<form method = "POST" action="">
+  <p style="color:white">Input query:</p>
+  <input type="text" id="query" name="query" size="100"><br>
+  <p style="color:white"> </p>
+  <input type="submit" value="Search">
+  <p style="color:white"> </p>
+  <p style="color:white"> </p>
+</form> 
+
+<p style="color:salmon">test </p>
+
+<hr>
+ 
+
+<a href="{{url_for('about')}}">About </a>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+     
+</body>
+</html> 
+
