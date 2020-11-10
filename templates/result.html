@@ -47,28 +47,31 @@
 <p style="color:salmon">test </p>
 
 <body>
-  <table style="width:100%">
+  <table border="1" style="width:100%">
     <!-- kolom tabel -->
-    <tr>
-      <!-- nama kolom -->
-      <th>Term</th> 
-      <th>Query</th>
-      {% for doc in docList %}  
-      <th>{{doc}}</th>  
-      {% endfor %}
-    </tr>
+    <thead>
+      <tr style="text-align: right;" >
+        <!-- nama kolom -->
+        <th>Term</th> 
+        <th>Query</th>
+        {% for doc in docList %}  
+        <th>{{doc}}</th>  
+        {% endfor %}
+      </tr>
+    </thead>
     <!-- baris tabel -->
-    {% for i in range(df_query|length) %}
-    <tr>
-      <!-- isi tiap kolom -->
-      {% for j in range(docList|length) %}
-      <td>{{df_query.iloc[i][j]}}</td>
-      {% endfor %}
-    </tr>
+    <tbody>
+      {% for i in range(df_query|length) %}
+      <tr>
+        <!-- isi tiap kolom -->
+        {% for j in range(df_query.columns|length) %}
+          <td>{{df_query.iloc[i][j]}}</td>
+        {% endfor %}
+      </tr>
     {% endfor %}
+    </tbody>
   </table>
 </body>    
-
 
 <p style="color:salmon">test </p>
 
