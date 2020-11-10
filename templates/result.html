@@ -35,7 +35,7 @@
   
 <body>
 	{% for doc in dataList %}
-		<a href="{{doc[3]}}">{{doc[0]}}</a>
+		<a href="file:///{{(doc[3])}}">{{doc[0]}}</a>
 		<p>Jumlah Kata: {{doc[1]}}</p>  
 		<p>Tingkat Kemiripan: {{doc[2]}}%</p>
 		<p>{{doc[4]}}</p>
@@ -47,7 +47,7 @@
 <p style="color:salmon">test </p>
 
 <body>
-  <table border="1" style="width:100%">
+  <table border="1" style="width:80%">
     <!-- kolom tabel -->
     <thead>
       <tr style="text-align: right;" >
@@ -76,7 +76,7 @@
 <p style="color:salmon">test </p>
 
 <hr>
- 
+<p>{{dataList[0][3]}}</p>
 
 <a href="{{url_for('about')}}">About </a>
 

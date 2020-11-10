@@ -129,10 +129,15 @@ def result():
                 if term not in terms:
                     terms.append(term)
                     
-    # menghapus "" pada indeks
-    processedQuery = stemSentence(removeStopwords(removePunctuation(query)))
-    processedQuery = processedQuery.split(" ")
-    processedQuery = [word for word in processedQuery if word != ""]
+    # processedQuery berisi unique query
+    processedQuery = []
+    qry = stemSentence(removeStopwords(removePunctuation(query)))
+    qry = qry.split(" ")
+    # menghapus ""
+    qry = [word for word in qry if word != ""]
+    for term in qry:
+        if term not in processedQuery:
+            processedQuery.append(term)
     # menambahkan setiap term baru ke daftar term (terms)
     for term in processedQuery:
         if term not in terms:
@@ -147,7 +152,7 @@ def result():
     # inisialisasi kolom query dengan 0
     df["query"] = [0 for i in range(term_length)]
     # menghitung kemunculan query
-    for word in processedQuery:
+    for word in qry:
         df["query"][word] += 1
         
     for filename in os.listdir(directory):   
@@ -186,8 +191,13 @@ def result():
         vector = []
         for val in df[doc]:
             vector.append(val)
+        # ||Q||.||D||
+        normMult = (normaVektor(vecQuery)*normaVektor(vector))
+        if normMult == 0:
+            sim = 0
         # sim = (Q.D)/(||Q||.||D||)
-        sim = dotProduct(vecQuery, vector)/(normaVektor(vecQuery)*normaVektor(vector))
+        else:
+            sim = dotProduct(vecQuery, vector)/normMult
         globals()["sim_"+doc] = sim
     # append doc's data to dataList
     
@@ -211,7 +221,6 @@ def result():
     df_query = df.loc[processedQuery, :]
     df_query = df_query.reset_index()
     df_query = df_query.rename(columns={'index':'Term'})
-    df_query['query'] = processedQuery
     return render_template("result.html", dataList=dataList, df_query=df_query, docList=docList)
 
 @app.route("/about")
