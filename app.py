@@ -79,12 +79,13 @@ def upload():
     if request.method == 'POST':
         file = request.files['file']
         # rename doc's file if doc's name exists
-        if file.filename in os.listdir(directory):
-            if(file.filename.split(".")[1] == "txt"):
-                file.filename = file.filename.split(".")[0]+"_02.txt"
-            if(file.filename.split(".")[1] == "html"):
-                file.filename = file.filename.split(".")[0]+"_02.html"
-        file.save(os.path.join(directory, file.filename))
+        if file.filename != "":
+            if file.filename in os.listdir(directory):
+                if(file.filename.split(".")[1] == "txt"):
+                    file.filename = file.filename.split(".")[0]+"_02.txt"
+                if(file.filename.split(".")[1] == "html"):
+                    file.filename = file.filename.split(".")[0]+"_02.html"
+            file.save(os.path.join(directory, file.filename))
         return render_template('file.html')
     return render_template('file.html')
     
