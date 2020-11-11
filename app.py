@@ -11,7 +11,7 @@ app = Flask(__name__)
 porter = PorterStemmer()
 
 # directory the uploaded files is saved
-directory = 'D:\simplesearchengine'
+directory = os.path.abspath("./static/simplesearchengine/")
 # if directory doesn't exist, make a new one
 if not os.path.exists(directory):
     os.makedirs(directory)
@@ -116,7 +116,7 @@ def result():
 
     for filename in os.listdir(directory):
         # membaca tiap file di document
-        file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
+        file = open('.\static\simplesearchengine\{}'.format(filename), encoding="utf8")
         # membaca setiap baris pada document
         my_lines_list=file.readlines()
 
@@ -160,7 +160,7 @@ def result():
         # inisialisasi tabel term dengan 0
         df[filename.split(".")[0]] = [0 for i in range(term_length)]
         # menghitung term pada tiap document
-        file = open('D:\simplesearchengine\{}'.format(filename), encoding="utf8")
+        file = open('.\static\simplesearchengine\{}'.format(filename), encoding="utf8")
         my_lines_list=file.readlines()
         
         x = []
@@ -203,7 +203,7 @@ def result():
     # append doc's data to dataList
     
     for doc in os.listdir(directory): 
-        file = open('D:\simplesearchengine\{}'.format(doc), encoding="utf8")
+        file = open('.\static\simplesearchengine\{}'.format(doc), encoding="utf8")
         # count words in file    
         data = file.read()
         words = data.split()
@@ -212,7 +212,7 @@ def result():
         docName = doc.split(".")[0]
         # similiarity
         similiarity = round(globals()["sim_"+docName]*100, 2)
-        globals()[docName] = tuple((docName, length, similiarity, "D:/simplesearchengine/"+doc, firstLine[docName]))
+        globals()[docName] = tuple((docName, length, similiarity, "\static\simplesearchengine\\"+doc, firstLine[docName]))
         dataList.append(globals()[docName])
 
     # sort dataList descendingly by value of "kemiripan"
