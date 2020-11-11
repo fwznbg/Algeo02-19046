@@ -171,8 +171,9 @@ def result():
             y = y.split(" ")
             x.extend(y)
             lineList.append(line)
-        # berisi baris pertama dari tiap doc
-        firstLine[filename.split(".")[0]] = lineList[0]
+        # berisi baris pertama dari tiap doc jika doc tidak kosong
+        if lineList:
+            firstLine[filename.split(".")[0]] = lineList[0]
         # menghapus "" pada list term dari document
         x = [word for word in x if word != ""]
         # menghitung tiap term pada tiap dokumen
@@ -212,9 +213,12 @@ def result():
         docName = doc.split(".")[0]
         # similiarity
         similiarity = round(globals()["sim_"+docName]*100, 2)
-        globals()[docName] = tuple((docName, length, similiarity, "\static\simplesearchengine\\"+doc, firstLine[docName]))
-        dataList.append(globals()[docName])
-
+        if doc in firstLine:    # jika doc tidak kosong (punya firstline)
+            globals()[docName] = tuple((docName, length, similiarity, "\static\simplesearchengine\\"+doc, firstLine[docName]))
+            dataList.append(globals()[docName])
+        else:
+            globals()[docName] = tuple((docName, length, similiarity, "\static\simplesearchengine\\"+doc, ""))
+            dataList.append(globals()[docName])
     # sort dataList descendingly by value of "kemiripan"
     dataList = sorted(dataList, key = lambda x: x[2], reverse = True)
 
