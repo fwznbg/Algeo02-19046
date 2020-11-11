@@ -33,6 +33,7 @@ def normaVektor(v):
 # remove punctuation in document
 def removePunctuation(sentence):
     import re
+    sentence = sentence.lower()
     return re.sub(r'[^\w\s]', '', sentence)
 
 # remove stopwords in document
