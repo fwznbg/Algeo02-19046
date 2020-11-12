@@ -62,7 +62,7 @@ def stemSentence(sentence):
 dataList = []
 # contain query
 query = ""
-# datframe contains terms in query
+# dataframe contains terms in query
 df_query = pd.DataFrame()
 # list of document
 docList = []
@@ -78,8 +78,8 @@ def main():
 def upload():
     if request.method == 'POST':
         file = request.files['file']
-        # rename doc's file if doc's name exists
-        if file.filename != "":
+        if file.filename != "":     # if there is file selected
+            # rename doc's file if doc's name exists
             if file.filename in os.listdir(directory):
                 if(file.filename.split(".")[1] == "txt"):
                     file.filename = file.filename.split(".")[0]+"_02.txt"
@@ -121,7 +121,6 @@ def result():
         # membaca setiap baris pada document
         my_lines_list=file.readlines()
 
-        # if not isStemmed:
         for line in my_lines_list:
             # remove stopWords dan punctuation serta stemming tiap baris
             x = stemSentence(removeStopwords(removePunctuation(line)))
@@ -160,11 +159,12 @@ def result():
     for filename in os.listdir(directory):   
         # inisialisasi tabel term dengan 0
         df[filename.split(".")[0]] = [0 for i in range(term_length)]
-        # menghitung term pada tiap document
-        file = open('.\static\simplesearchengine\{}'.format(filename), encoding="utf8")
-        my_lines_list=file.readlines()
         
+        file = open('.\static\simplesearchengine\{}'.format(filename), encoding="utf8")
+        my_lines_list = file.readlines()
+    
         x = []
+        # berisi baris pada tiap doc
         lineList = []
     
         for line in my_lines_list:
@@ -202,7 +202,6 @@ def result():
         else:
             sim = dotProduct(vecQuery, vector)/normMult
         globals()["sim_"+doc] = sim
-    # append doc's data to dataList
     
     for doc in os.listdir(directory): 
         file = open('.\static\simplesearchengine\{}'.format(doc), encoding="utf8")
@@ -214,7 +213,7 @@ def result():
         docName = doc.split(".")[0]
         # similiarity
         similiarity = round(globals()["sim_"+docName]*100, 2)
-        if doc in firstLine:    # jika doc tidak kosong (punya firstline)
+        if docName in firstLine.keys():    # jika doc tidak kosong (punya firstline)
             globals()[docName] = tuple((docName, length, similiarity, "\static\simplesearchengine\\"+doc, firstLine[docName]))
             dataList.append(globals()[docName])
         else:
