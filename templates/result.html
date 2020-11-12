@@ -15,6 +15,7 @@
 </div>
 
 <!-- Page Content -->
+<style>h1 {text-align: center;}</style>
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
   <div class="w3-container">
@@ -24,7 +25,7 @@
 
 <form method = "POST" action="{{url_for('result')}}">
   <p style="color:white">Input query:</p>
-  <input type="text" id="query" name="query" size="100"><br>
+  <input type="text" id="query" name="query" size="100" placeholder="Type to search"><br>
   <p style="color:white"> </p>
   <input type="submit" value="Search">
   <p style="color:white"> </p>
