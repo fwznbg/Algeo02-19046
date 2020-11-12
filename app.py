@@ -13,8 +13,6 @@ porter = PorterStemmer()
 # directory the uploaded files is saved
 directory = os.path.abspath("./static/simplesearchengine/")
 # if directory doesn't exist, make a new one
-if not os.path.exists(directory):
-    os.makedirs(directory)
 
 # calculate dot product of v1 and v2
 def dotProduct(v1, v2):
@@ -33,6 +31,10 @@ def normaVektor(v):
 # remove punctuation in document
 def removePunctuation(sentence):
     import re
+    # remove html tags
+    cleaner = re.compile('<.*?>')
+    sentence = re.sub(cleaner, '', sentence)
+    # lowercasing
     sentence = sentence.lower()
     return re.sub(r'[^\w\s]', '', sentence)
 
@@ -77,6 +79,8 @@ def main():
 @app.route("/upload", methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         files = request.files.getlist("file")
         # file = request.files['file']
         for file in files:
