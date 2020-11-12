@@ -77,15 +77,17 @@ def main():
 @app.route("/upload", methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-        file = request.files['file']
-        if file.filename != "":     # if there is file selected
-            # rename doc's file if doc's name exists
-            if file.filename in os.listdir(directory):
-                if(file.filename.split(".")[1] == "txt"):
-                    file.filename = file.filename.split(".")[0]+"_02.txt"
-                if(file.filename.split(".")[1] == "html"):
-                    file.filename = file.filename.split(".")[0]+"_02.html"
-            file.save(os.path.join(directory, file.filename))
+        files = request.files.getlist("file")
+        # file = request.files['file']
+        for file in files:
+            if file.filename != "":     # if there is file selected
+                # rename doc's file if doc's name exists
+                if file.filename in os.listdir(directory):
+                    if(file.filename.split(".")[1] == "txt"):
+                        file.filename = file.filename.split(".")[0]+"_02.txt"
+                    if(file.filename.split(".")[1] == "html"):
+                        file.filename = file.filename.split(".")[0]+"_02.html"
+                file.save(os.path.join(directory, file.filename))
         return render_template('file.html')
     return render_template('file.html')
     
