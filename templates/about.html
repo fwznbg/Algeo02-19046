@@ -20,7 +20,11 @@ body  {
 </div>
 
 <!-- Page Content -->
-<style>h1 {text-align: center;}</style>
+<style>
+	h1 {text-align: center;}
+	p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}
+	b {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}
+</style>
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
   <div class="w3-container">
@@ -31,50 +35,62 @@ body  {
 
 <p style="color:salmon">test </p>
 
-<style>b {text-align: center; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
-<b>Konsep Singkat</b>
+<body>
+	<b>Konsep Singkat</b>
+	
+	<p style="color:salmon">test </p>
 
-<style>p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
-<p>program search engine sederhana ini menggunakan konsep temu-balik informasi dengan model ruang vektor dan menggunakan cosine similarity untuk mencari relevansi antara dokumen dengan search query yang ada.
-temu-balik informasi sendiri singkatnya adalah sistem yang bekerja untuk mencari informasi yang relevan (dokumen) dengan yang diinginkan pengguna (search query) dari kumpulan-kumpulan informasi secara otomatis.
-secara lebih detail bagaimana cara kerja sistem temu-balik informasi dengan model ruang vektor sebagai berikut :
-misalkan sudah ada kumpulan dokumen pada search engine kami, kemudian dari kumpulan dokumen tersebut kami proses sehingga mendapatkan sejumlah term atau kata.
-proses yang dilakukan adalah menyederhanakan kata-kata yang ada pada dokumen menjadi kata dasar, menghilangkan tanda baca dan pungtuasi sehingga term atau kata yang ada menjadi bermakna umum.
-setelah mendapatkan kumpulan term, seluruh dokumen dan search query dinyatakan sebagai vektor. contoh vektor w=(w1,w2,..,wn) dalam R^n dengan wi adlaah bobot setiap kata atau term yang ada dalam query atau dokumen.
-setelah terbentuk vektor-vektor, untuk mendapatkan relevansi antara query dengan dokumen-dokumen yang ada, dapat dilakukan dengan cara menghitung cosine similarity.
-cosine similarity ini merupakan perkalian dot 2 buah vektor, tetapi yang kita cari adalah cos teta nya.
-karena di awal kita ingin mencari dokumen yg paling relevan dengan query, maka kita bandingkan cosine similarity antara seluruh dokumen dengan query.
-jika hasil cosine similarity tinggi (mendekati satu) maka semakin tinggi pula relevansi antara dokumen dengan query.
-</p> 
+	<p>Program search engine sederhana ini menggunakan konsep temu-balik informasi dengan model ruang vektor dan menggunakan cosine similarity untuk mencari relevansi antara dokumen dengan search query yang ada.
+	Temu-balik informasi sendiri singkatnya adalah sistem yang bekerja untuk mencari informasi yang relevan (dokumen) dengan yang diinginkan pengguna (search query) dari kumpulan-kumpulan informasi secara otomatis.
+	Secara lebih detail bagaimana cara kerja sistem temu-balik informasi dengan model ruang vektor sebagai berikut :
+	Misalkan sudah ada kumpulan dokumen pada search engine kami, kemudian dari kumpulan dokumen tersebut kami proses sehingga mendapatkan sejumlah term atau kata.
+	Proses yang dilakukan adalah menyederhanakan kata-kata yang ada pada dokumen menjadi kata dasar, menghilangkan tanda baca dan pungtuasi sehingga term atau kata yang ada menjadi bermakna umum.
+	Setelah mendapatkan kumpulan term, seluruh dokumen dan search query dinyatakan sebagai vektor. Contoh vektor w=(w1,w2,..,wn) dalam R^n dengan wi adalah bobot setiap kata atau term yang ada dalam query atau dokumen.
+	Setelah terbentuk vektor-vektor, untuk mendapatkan relevansi antara query dengan dokumen-dokumen yang ada, dapat dilakukan dengan cara menghitung cosine similarity.
+	Cosine similarity ini merupakan perkalian dot 2 buah vektor, tetapi yang kita cari adalah cos teta nya.
+	Karena di awal kita ingin mencari dokumen yg paling relevan dengan query, maka kita bandingkan cosine similarity antara seluruh dokumen dengan query.
+	Jika hasil cosine similarity tinggi (mendekati satu) maka semakin tinggi pula relevansi antara dokumen dengan query.
+	</p> 
+	<p style="color:salmon">test </p>
+	<p style="color:salmon">test </p>
 
-<style>b {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
-<b>How to Use</b>
+	<b>How to Use</b>
+	
+	<p style="color:salmon">test </p>
 
-<style>p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
-<p>1.Buka terminal (cmd) pastikan berada di directory di mana file berada.
-2.Masuk ke directory venv/Scripts lalu tulis activate di terminal untuk mengaktifkan virtual environtment.
-3.Kembali ke directory di mana file berada.
-4.Jalankan app.py dengan menulis app.py di terminal.
-5.Buka http://localhost:5000/ di browser anda.
-</p> 
+	<style>p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
+	<p>1.Buka terminal (cmd) pastikan berada di directory di mana file berada.</p>
+	<p>2.Masuk ke directory venv/Scripts lalu tulis activate di terminal untuk mengaktifkan virtual environtment.</p>
+	<p>3.Kembali ke directory di mana file berada.</p>
+	<p>4.Jalankan app.py dengan menulis app.py di terminal.</p>
+	<p>5.Buka http://localhost:5000/ di browser anda.</p>
+	
+	<p style="color:salmon">test </p>
+	<p style="color:salmon">test </p>
 
-<style>b {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
-<b>About Us</b>
+	<b>About Us</b>
+	
+	<p style="color:salmon">test </p>
 
-<style>p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
-<p>Project pembuatan search engine sederhana ini berawal dari tugas besar mata kuliah Aljabar Linier dan Geometri Teknik Informatika ITB.
-Kami memberi nama search engine sederhana kami dengan nama gugel. Tidak ada filosofi apapun, murni hanya pelesetan dari search engine ternama di dunia, yaitu mozila firefox.
+	<p>Project pembuatan search engine sederhana ini berawal dari tugas besar mata kuliah Aljabar Linier dan Geometri Teknik Informatika ITB.
+	Kami memberi nama search engine sederhana kami dengan nama gugel. Tidak ada filosofi apapun, murni hanya pelesetan dari search engine ternama di dunia, yaitu mozila firefox.</p>
+	
+	<p style="color:salmon">test </p>
+	
+	<p>Kemudian dalang dibalik search engine sederhana "gugel" ini ada 3 mahasiswa yang baru saja merasakan rasanya jurusan.</p>
+	<p>Dalang yang pertama adalah $Muhammad Fawwaz Naabigh$ (13519206) 	ig : <a href="https://www.instagram.com/fwznbg/" target="_blank" style="color:yellow">@fwznbg</a></p>
+	<p>Dalang yang kedua adalah $Nizamixavier Rafif Lutvie$ (13519085) 	ig : <a href="https://www.instagram.com/nizamixavier/" target="_blank" style="color:turquoise">@nizamixavier</a></p>
+	<p>Dalang yang ketiga adalah $Dwianditya Hanif$ (13519046)			ig : <a href="https://www.instagram.com/nypnop/" target="_blank" style="color:blue">@nypnop</a></p>
+	
+	<p style="color:salmon">test </p>
+	
+	<p>Tak lupa kami mengucapkan terimakasih kepada Tuhan Yang Maha Esa dan dosen pengampu Aljabar Linier dan Geometri bapak Rinaldi Munir.
+	Dan tentunya kakak asisten yang tercinta <3.</p>
+ 
+	<p style="color:salmon">test </p>
+	<p style="color:salmon">test </p>
+</body>
 
-Kemudian dalang dibalik search engine sederhana "gugel" ini ada 3 mahasiswa yang baru saja merasakan rasanya jurusan.
-Dalang yang pertama adalah $Muhammad Fawwaz Naabigh$ 13519206 ig : @fwznbg
-Dalang yang kedua adalah $Nizamixavier Rafif Lutvie$ 13519085 ig : @nizamixavier
-Dalang yang ketiga adalah $Dwianditya Hanif$ 13519046 ig :@nypnop
-
-Tak lupa kami mengucapkan terimakasih kepada Tuhan Yang Maha Esa dan dosen pengampu Aljabar Linier dan Geometri bapak Rinaldi Munir.
-Dan tentunya kakak asisten yang tercinta <3.
-</p> 
-
-<p style="color:salmon">test </p>
 
 <hr>
 
