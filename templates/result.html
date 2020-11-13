@@ -36,6 +36,15 @@
 	margin: 4px 2px;
 	cursor: pointer;
   }
+  input[type=submit] {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+  }
 </style>
   <input type="text" id="query" name="query" size="100" placeholder="Type to search.."><br>
   <input type="submit" value="Search">
@@ -47,7 +56,7 @@
   
 <body>
 	{% for doc in dataList %}
-		<a href="{{(doc[3])}}">{{doc[0]}}</a>
+		<a style="color:DarkBlue"  href="{{(doc[3])}}">{{doc[0]}}</a>
 		<p>Jumlah Kata: {{doc[1]}}</p>  
 		<p>Tingkat Kemiripan: {{doc[2]}}%</p>
 		<p>{{doc[4]}}</p>
@@ -59,7 +68,7 @@
 <p style="color:salmon">test </p>
 
 <body>
-  <table border="1" style="width:99%">
+  <table border="1" style="width:99%" bgcolor="yellow" bordercolor="red">
     <!-- kolom tabel -->
     <thead>
       <tr style="text-align: right;" >
