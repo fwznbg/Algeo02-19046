@@ -5,7 +5,12 @@
 Program search engine sederhana ini menggunakan konsep temu-balik informasi dengan model ruang vektor dan menggunakan cosine similarity untuk mencari relevansi antara dokumen dengan search query yang ada. Temu-balik informasi sendiri singkatnya adalah sistem yang bekerja untuk mencari informasi yang relevan (dokumen) dengan yang diinginkan pengguna (search query) dari kumpulan-kumpulan informasi secara otomatis. Secara lebih detail bagaimana cara kerja sistem temu-balik informasi dengan model ruang vektor sebagai berikut : Misalkan sudah ada kumpulan dokumen pada search engine kami, kemudian dari kumpulan dokumen tersebut kami proses sehingga mendapatkan sejumlah term atau kata. Proses yang dilakukan adalah menyederhanakan kata-kata yang ada pada dokumen menjadi kata dasar, menghilangkan tanda baca dan pungtuasi sehingga term atau kata yang ada menjadi bermakna umum. Setelah mendapatkan kumpulan term, seluruh dokumen dan search query dinyatakan sebagai vektor. Contoh vektor w = (w1,w2,...,wn) dalam Rn dengan wi adalah bobot setiap kata atau term yang ada dalam query atau dokumen. Setelah terbentuk vektor-vektor, untuk mendapatkan relevansi antara query dengan dokumen-dokumen yang ada, dapat dilakukan dengan cara menghitung cosine similarity. Cosine similarity ini merupakan perkalian dot 2 buah vektor, tetapi yang kita cari adalah cos teta nya. Karena di awal kita ingin mencari dokumen yg paling relevan dengan query, maka kita bandingkan cosine similarity antara seluruh dokumen dengan query. Jika hasil cosine similarity tinggi (mendekati satu) maka semakin tinggi pula relevansi antara dokumen dengan query.
 
 ## Screenshots
-![](./doc/screenshot/1.jpg)
+
+![](./doc/screenshot/1.jpg?raw=true "")
+![](./doc/screenshot/2.jpg?raw=true "")
+![](./doc/screenshot/3.jpg?raw=true "")
+![](./doc/screenshot/4.jpg?raw=true "")
+![](./doc/screenshot/5.jpg?raw=true "")
 
 ## How To Use
 Sebelumnya, pastikan sudah meng-install library yang dibutuhkan, diantaranya flask, nltk, pandas, BeautifulSoup, dan requests.
