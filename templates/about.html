@@ -26,7 +26,8 @@ div.a {
 <!-- Page Content -->
 <style>
 	h1 {text-align: center;}
-	b {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}
+	b {text-align: center; min-width: 1000px; max-width: 1000px; margin: 0 auto}
+	p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}
 </style>
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
@@ -48,7 +49,7 @@ div.a {
 	Secara lebih detail bagaimana cara kerja sistem temu-balik informasi dengan model ruang vektor sebagai berikut :
 	Misalkan sudah ada kumpulan dokumen pada search engine kami, kemudian dari kumpulan dokumen tersebut kami proses sehingga mendapatkan sejumlah term atau kata.
 	Proses yang dilakukan adalah menyederhanakan kata-kata yang ada pada dokumen menjadi kata dasar, menghilangkan tanda baca dan pungtuasi sehingga term atau kata yang ada menjadi bermakna umum.
-	Setelah mendapatkan kumpulan term, seluruh dokumen dan search query dinyatakan sebagai vektor. Contoh vektor w=(w1,w2,..,wn) dalam R^n dengan wi adalah bobot setiap kata atau term yang ada dalam query atau dokumen.
+	Setelah mendapatkan kumpulan term, seluruh dokumen dan search query dinyatakan sebagai vektor. Contoh vektor w = (w<sub>1</sub>,w<sub>2</sub>,...,w<sub>n</sub>) dalam R<sup>n</sup> dengan w<sub>i</sub> adalah bobot setiap kata atau term yang ada dalam query atau dokumen.
 	Setelah terbentuk vektor-vektor, untuk mendapatkan relevansi antara query dengan dokumen-dokumen yang ada, dapat dilakukan dengan cara menghitung cosine similarity.
 	Cosine similarity ini merupakan perkalian dot 2 buah vektor, tetapi yang kita cari adalah cos teta nya.
 	Karena di awal kita ingin mencari dokumen yg paling relevan dengan query, maka kita bandingkan cosine similarity antara seluruh dokumen dengan query.
@@ -60,13 +61,21 @@ div.a {
 	<div class="a"><b>How to Use</b></div>
 	
 	<p style="color:salmon">test </p>
-
-	<style>p {text-align: justify; min-width: 1000px; max-width: 1000px; margin: 0 auto}</style>
+	
+	<p>Penggunaan Program:</p>
 	<p>1. Buka terminal (cmd) pastikan berada di directory di mana file berada.</p>
 	<p>2. Masuk ke directory venv/Scripts lalu tulis activate di terminal untuk mengaktifkan virtual environtment.</p>
 	<p>3. Kembali ke directory di mana file berada.</p>
 	<p>4. Jalankan app.py dengan menulis app.py di terminal.</p>
-	<p>5. Buka http://localhost:5000/ di browser anda.</p>
+	<p>5. Buka <a href="http://localhost:5000/" target="_blank" style="color:blue">http://localhost:5000/</a> di browser Anda.</p>
+	
+	<p style="color:salmon">test </p>
+	
+	<p>Penggunaan Search Engine:</p>
+	<p>1. Terdapat menu sidebar di pojok kiri atas, jika menekan tombol tersebut, akan ditampilkan menu untuk menuju laman web kami yang lain. Laman web kami terdapat tiga yaitu Home, Input document, dan About. Anda tinggal memilih ingin menuju laman yang mana dengan cara menekan pilihan yang sesuai dengan nama laman yang ingin Anda tuju.</p>
+	<p>2. Ketika di laman upload, jika Anda ingin mengupload file dokumen Anda, Anda tinggal menekan tombol pilih file untuk memilih file Anda, kemudian jika sudah terpilih tekan submit dan file Anda sudah terupload. Catatan: file yang bisa diterima oleh uploader hanya yang berekstensi .html dan .txt.</p>
+	<p>3. Ketika di laman home, Anda tinggal menginput query yang anda inginkan, kemudian tekan tombol search dan Anda akan mendapatkan referensi dokumen yang sudah terurut berdasarkan tingkat kemiripannya dengan query Anda.</p>
+	<p>4.  Ketika Anda di laman About, Anda akan mendapati laman yang berisikan tentang latar belakang gugel dibuat, siapa saja dalang dibalik pembuatan gugel, dan ucapan terima kasih.</p>
 	
 	<p style="color:salmon">test </p>
 	<p style="color:salmon">test </p>
