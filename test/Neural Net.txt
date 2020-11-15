@@ -1,0 +1,6 @@
+THIS NEURAL NETWORK TURNS YOU INTO A ZOMBIE
+A new website uses a generative adversarial network (GAN), a type of artificial intelligence algorithm, to zombify your selfies.
+
+The site, makemeazombie.com, works like similar GAN projects: Upload a picture of your or anyone else’s face, and let it get to work. It’s like the high-effort version of an Instagram face filter, just in time for a Halloween season where parties are being replaced by Zoom sessions.
+The algorithm itself was trained on about 300 pictures of people wearing zombie masks or makeup that indie developer Josh Brown Kramer took from the internet, according to Synced. With the idea of what a Halloween zombie should look like, the algorithm then focuses on mapping the face shape of pictures people upload and mapping zombified traits onto their features.
+As a result, the output looks like someone (skillfully!) slapped on a lot of Halloween makeup. It might not cut it for “The Walking Dead,” but it could save us having to mask up for a trip to Spirit Halloween.

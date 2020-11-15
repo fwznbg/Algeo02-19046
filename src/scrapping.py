@@ -4,8 +4,6 @@ from bs4 import BeautifulSoup
 # function for removing punctuation on title used for file's name
 def removePunctuation(sentence):
     import re
-    # lowercasing
-    sentence = sentence.lower()
     return re.sub(r'[^\w\s]', '', sentence)
 
 # url to be scrapped

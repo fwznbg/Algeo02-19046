@@ -1,0 +1,8 @@
+Moscow’s facial recognition system can be hijacked for just $200, report shows
+A digital rights activist in Moscow was able to purchase access to the city’s extensive facial recognition system for just 16,000 rubles (approximately $200), as reported by the Thomson Reuters Foundation. After seeing ads for the service on Telegram, Anna Kuznetsova transferred the money along with a picture of herself to a seller. Two days later, she received an extensive report of her movements over the previous month, apparently pulled directly from the police system.
+
+Spanning more than 100,000 cameras across the city, Moscow’s facial recognition system is meant to be restricted to law enforcement. It’s unclear how the seller was able to secure access, whether through bribery or a digital intrusion. Two officers were placed under investigation in the wake of the incident, but Kuznetsova has filed a lawsuit aimed at pausing the program until clearer procedures are set.
+
+As Kuznetsova sees it, the system poses a clear danger to the public as long as it’s available. “Any crazy guy can stalk you using this; criminals can check when and where you go and steal from your apartment or hurt you,” she told Reuters. “Anything can happen.”
+
+Moscow police rolled out facial recognition in January, and while their system is one of the more extensive city-level efforts, it’s far from the only one. In July, Rite Aid was revealed to have used facial recognition across a network of hundreds of stores for more than eight years, intended as a deterrent against theft and violent crime. A number of US cities have banned facial recognition by public agencies in response to those concerns, including San Francisco, Boston, and (most recently) Portland, Maine.

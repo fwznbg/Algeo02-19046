@@ -1,0 +1,12 @@
+PSA: macOS is a little broken this morning, with many non-Apple apps hanging at launch
+If you’re on a Mac running a relatively new version of macOS (Catalina or Big Sur, seemingly) and it’s having all sorts of weird issues right now: you’re not alone.
+We’re seeing a flood of reports from both users and developers of an issue preventing apps — particularly those not made by Apple  — from properly launching. Most are reporting that apps they already had open are fine, but attempts to open any new apps will result in it just bouncing around in the dock for minutes at a time.
+The issue first popped up this morning (curiously coinciding with the launch of macOS Big Sur) and seems to be improving for some… but for the time being, be aware your apps might not work as expected.
+It’s unclear exactly what’s happening, but the most popular theory is that there’s a server-side issue with Gatekeeper, the security feature that verifies the authenticity of macOS apps at launch.
+Update: As of a bit after 2pm Pacific, Apple’s Developer System Status page says this problem should now be fixed.
+
+
+😅 Looks like, when apps are launched, Gatekeeper is unable to check their validity over the internet, due to overwhelmed Apple servers. So, uh, let’s all hang in there! You got this, Apple devops!
+— Panic (@panic) November 12, 2020
+
+ 
