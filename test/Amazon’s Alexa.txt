@@ -1,0 +1,28 @@
+Amazon’s Alexa will now guess what skills you want to use based on your questions
+Finding new ways to use Amazon’s Alexa has always been a bit of a pain. Amazon boasts that its AI assistant has more than 100,000 skills, but most are garbage and the useful ones are far from easy to discover. Today, though, Amazon announced it’s launched a new way to surface skills: by guessing what users are after when they talk to Alexa about other tasks.
+
+The company refers to this process as “[inferring] customers’ latent goals.” By this, it means working out any questions that are implied by other queries. Amazon gives the example of a customer asking “How long does it take to steep tea?” to which Alexa will answer “five minutes” before asking the follow-up: ”Would you like me to set a timer for five minutes?”
+
+This all sounds well and good, but it’s not hard to imagine this feature (which is already available to Alexa customers in English in the United States) potentially becoming quite annoying. If Alexa infers a user’s intent incorrectly and suggests an unwanted skill, then that person is bound to feel irritated, as if they’re being advertised to by their digital butler.
+
+Amazon gave The Verge a number of example scenarios of follow-up questions (below), and said that other skills that feed into the system include Bark Like a Dog, Earth Cam, Harry Potter Trivia, Historical Voices, Slow Speller, Xbox, and Zoo Keeper. Some of these scenarios will be useful for users, but others less so. It’s a bit of a mixed bag really.
+
+CNBC
+
+Customer: What’s the stock price of {X}?
+Alexa: When the market closed on Monday, {X} traded at $201.15, down 1.99% since the previous close.
+Alexa: Would you like to know the intraday high for {X} from the CNBC skill?
+
+TED Talks
+
+Customer: What happened today in history?
+Alexa: On May 18, 1980…
+Alexa: By the way, I can search for talks on history in the TED Talk skill. Want me to pull them up?
+
+Ultimate History Quiz
+
+Customer: When did the second world war end?
+Alexa: The Second World War ended on September 2, 1945.
+Alexa: Want to test your history knowledge with Ultimate History Quiz?
+
+Whether this new function will be useful or irritating will depend on its implementation, but it’s part of Amazon’s long-term goal to make talking to Alexa more natural. Earlier this year, the company announced new abilities for the AI assistant including the ability to ask clarifying questions, changing the tone of its voice, and a new “conversation” mode in which Alexa engages with multiple participants.
